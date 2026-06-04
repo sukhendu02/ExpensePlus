@@ -2,6 +2,24 @@
 import {DataTypes,Model} from "sequelize";
 import sequelize from "../config/database.js";
 
+export const CATEGORIES = [
+  "Food",
+  "Transport",
+  "Bills",
+  "Entertainment",
+  "Other",
+];
+
+export const PAYMENT_METHODS = Object.freeze([
+  "Cash",
+  "UPI",
+  "Credit Card",
+  "Debit Card",
+  "Bank Transfer",
+  "Other",
+]);
+
+
 const Expense = sequelize.define("Expense",
     {
         id:{
@@ -20,6 +38,12 @@ const Expense = sequelize.define("Expense",
         category:{
             type:DataTypes.STRING,
             allowNull:false,
+              validate: {
+        isIn: {
+          args: [CATEGORIES],
+          msg: `Category must be one of: ${CATEGORIES.join(", ")}`,
+        },
+      },
 
         },
         expenseDate: {
@@ -39,6 +63,15 @@ const Expense = sequelize.define("Expense",
       type: DataTypes.STRING(500),
       allowNull: true,
       defaultValue: null,
+    },
+     paymentMethod: {
+      type: DataTypes.STRING(30),
+      allowNull: false,
+      defaultValue: "Cash",
+      field: "payment_method",
+      validate: {
+        isIn: [PAYMENT_METHODS],
+      },
     },
         
     },
