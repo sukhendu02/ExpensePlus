@@ -1,16 +1,15 @@
 import {Router} from "express";
 const router = Router();
-
+import {addExpense,getAllExpense,deleteExpense,updateExpense} from "../controller/expenseController.js";
 
 // ROUTES
-router.post("/add-expense",(req,res)=>{
+router.post("/",addExpense);
 
+router.get("/",getAllExpense);
 
-    res.status(201).json({
-        message:"Expense added successfully",
-        data:data
-    })
+router.delete('/:id',deleteExpense);
 
-})
+router.patch('/:id',updateExpense)
+
 
 export default router;

@@ -18,7 +18,7 @@ app.use(express.json());
 
 
 // ROUTE FOR EXPENSES
-app.use("api/v1/expense",expenseRoute)
+app.use("/api/v1/expense",expenseRoute)
 
 
 // HEALTH CHECK ENDPOINT    
@@ -29,5 +29,11 @@ app.get("/health",(req,res)=>{
     })
 })
 
+
+// ERROR 404 HANDLER
+app.use(notFoundHandler);
+
+// GLOBAL ERROR HANDLER
 app.use(errorHandler);
+
 export default app;
