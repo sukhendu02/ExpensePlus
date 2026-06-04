@@ -2,22 +2,9 @@
 import {DataTypes,Model} from "sequelize";
 import sequelize from "../config/database.js";
 
-export const CATEGORIES = [
-  "Food",
-  "Transport",
-  "Bills",
-  "Entertainment",
-  "Other",
-];
+import { CATEGORIES } from "../constant/categories.js";
+import { PAYMENT_METHODS } from "../constant/paymentMethod.js";
 
-export const PAYMENT_METHODS = Object.freeze([
-  "Cash",
-  "UPI",
-  "Credit Card",
-  "Debit Card",
-  "Bank Transfer",
-  "Other",
-]);
 
 
 const Expense = sequelize.define("Expense",
@@ -64,6 +51,8 @@ const Expense = sequelize.define("Expense",
       allowNull: true,
       defaultValue: null,
     },
+
+    
      paymentMethod: {
       type: DataTypes.STRING(30),
       allowNull: false,
