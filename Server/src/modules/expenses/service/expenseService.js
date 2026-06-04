@@ -58,6 +58,8 @@ const validateExpenseInput = (data)=>{
 
 }
 
+
+// ADD EXPENSE SERVICE
 export const addExpenseService = async(userData)=>{
   
      if(!userData){
@@ -82,6 +84,7 @@ export const addExpenseService = async(userData)=>{
     return expense;
 }
 
+// DELETE EXPENSE SERVICE
 export const deleteExpenseService = async(expenseId)=>{
 
     // FIND EXPENSE USING EXPENSE ID
@@ -93,6 +96,7 @@ export const deleteExpenseService = async(expenseId)=>{
     await expense.destroy();
 }
 
+// UPDATE EXPENSE SERVICE
 export const updateExpeseService=async(expenseId,updatedData)=>{
     // FIND THE ITEM BY ID
     const expense = await Expense.findOne({
@@ -109,6 +113,7 @@ export const updateExpeseService=async(expenseId,updatedData)=>{
     return updateExpense
 }
 
+// UPDATE EXPENSE SERVICE
 export const getAllExpensesService = async(query={})=>{
 
     // PREDEFINED CONSTANTS
