@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback, useMemo, useRef } from 'react';
-import { getExpenses,deleteExpense } from '../api/expenseApi';
+import { getExpenses,deleteExpense,createExpense } from '../api/expenseApi';
 import toast from 'react-hot-toast';
+
 export const useExpenses = () => {
   const [expenses, setExpenses] = useState([]);
   const [pagination, setPagination] = useState(null);
@@ -123,6 +124,30 @@ export const useExpenses = () => {
     }
   }, [fetchExpenses, queryParams]);
 
+   const handleAdd = useCallback(async (data) => {
+    try {
+      await createExpense(data);
+      fetchExpenses(queryParams);
+      toast.success("Expense added successfully");
+    } catch (err) {
+      const message = err.response?.data?.message || err.message || 'Failed to add expense';
+      setError(message);
+      toast.error(message)
+    }
+  }, [fetchExpenses, queryParams]);
+
+  const handleEdit = useCallback(async (id, data) => {
+    try {
+      await updateExpense(id, data);
+      fetchExpenses(queryParams);
+      toast.success("Expense updated successfully")
+    } catch (err) {
+      const message = err.response?.data?.message || err.message || 'Failed to update expense';
+      setError(message);
+      toast.error(message)
+    }
+  }, [fetchExpenses, queryParams]);
+
   return {
     expenses,
     pagination,
@@ -137,5 +162,7 @@ export const useExpenses = () => {
     handleClearFilters,
     handleRetry,
     handleDelete,
+    handleAdd,
+    handleEdit,
   };
 };

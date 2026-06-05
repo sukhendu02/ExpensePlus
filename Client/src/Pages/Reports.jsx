@@ -1,11 +1,12 @@
 import React from 'react'
-import { useExpenses } from '../hooks/useExpense';
+
 import ExpensePagination from '../Component/expense/ExpensePagination';
 import ExpenseSearchBar from '../Component/expense/ExpenseSearchBar';
 import ExpenseTable from '../Component/expense/ExpenseTable';
 import ExpenseFilters from '../Component/expense/ExpenseFilter';
 import Spinner from '../Component/ui/Spinner'
 import ErrorMessage from '../Component/ui/ErrorMessage';
+import { useOutletContext } from 'react-router-dom';
 export default function Reports() {
      const {
     expenses,
@@ -20,8 +21,11 @@ export default function Reports() {
     handleSearch,
     handleClearFilters,
     handleRetry,
-    handleDelete
-  } = useExpenses();
+    handleDelete,
+    handleAdd,
+    handleEdit,
+    
+  } = useOutletContext();
 
   return (
     <>

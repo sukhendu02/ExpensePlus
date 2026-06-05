@@ -1,6 +1,6 @@
 import { useState, useMemo } from "react";
 import { Download, Trash2, X, TrendingDown, TrendingUp, Landmark, Calendar, ChevronDown } from "lucide-react";
-import { useExpenses } from "../hooks/useExpense";
+
 // ── Dummy data ──────────────────────────────────────────────────────────────
 const TRANSACTIONS = [
   { id: 1,  date: "2023-10-24", description: "Whole Foods Market", subtext: "Grocery Purchase",  category: "Food",     paymentMethod: "Chase Checking",  amount: -142.30  },
@@ -122,21 +122,7 @@ export default function Expense() {
   };
 
 
-  // BUILDING 
-  const {
-    expenses,
-    pagination,
-    loading,
-    initialLoad,
-    error,
-    filters,
-    handleFilterChange,
-    handleSort,
-    handlePageChange,
-    handleSearch,
-    handleClearFilters,
-    handleRetry,
-  } = useExpenses();
+  
 
   return (
     <div className="min-h-screen bg-brand-background">

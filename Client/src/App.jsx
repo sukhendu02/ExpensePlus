@@ -4,24 +4,12 @@ import Expense from './Pages/Expense'
 import Reports from './Pages/Reports';
 import Link4 from './Pages/Link4';
 import AppLayout from './Component/Layout/AppLayout';
-import { useExpenses } from "./hooks/useExpense.js";
 
 import { Toaster } from 'react-hot-toast'
 
 function App() {
 
-  //  const {
-  //   expenses,
-  //   computedExpenses,
-  //   loading,
-  //   error,
-  //   filters,
-  //   setFilters,
-  //   summaryStats,
-  //   addExpense,
-  //   updateExpense,
-  //   deleteExpense,
-  // } = useExpenses();
+ 
   return (
    <>
    <BrowserRouter>

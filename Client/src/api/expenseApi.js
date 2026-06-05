@@ -19,3 +19,11 @@ export const getExpenses = (params) => {
 export const deleteExpense = (id) => {
   return api.delete(`/expense/${id}`);
 };
+
+export const createExpense = (data) => {
+  return api.post('/expense', data);
+};
+
+export const updateExpense = (id, data) => {
+  return api.patch(`/expensw/${id}`, data);
+};

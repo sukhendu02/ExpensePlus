@@ -8,7 +8,7 @@ const INITIAL_FORM = {
   category:      "",
   paymentMethod: "Cash",
   expenseDate:   new Date().toISOString().split("T")[0],
-  notes:         "",
+  
 };
 
 export default function AddExpenseModal({ onClose, onSubmit, initialData = null }) {
@@ -47,12 +47,14 @@ export default function AddExpenseModal({ onClose, onSubmit, initialData = null 
     const e = validate();
     if (Object.keys(e).length) { setErrors(e); return; }
     onSubmit({
-      ...(isEdit && { id: initialData.id }),   // carry id for update
+      ...(isEdit && { id: initialData.id }),   
       ...form,
       amount: Number(form.amount),
     });
     onClose();
   };
+
+  
 
   return (
     <div
@@ -71,7 +73,7 @@ export default function AddExpenseModal({ onClose, onSubmit, initialData = null 
           </h2>
           <button
             onClick={onClose}
-            className="p-1.5 rounded-lg hover:bg-gray-100 text-gray-400 transition-colors"
+            className="p-1.5 rounded-lg cursor-pointer hover:bg-gray-100 text-gray-400 transition-colors"
           >
             <X size={18} />
           </button>
@@ -86,7 +88,7 @@ export default function AddExpenseModal({ onClose, onSubmit, initialData = null 
               Amount
             </label>
             <div className="flex items-center gap-2">
-              <span className="text-4xl font-light text-gray-800">$</span>
+              <span className="text-4xl font-light text-gray-800">₹</span>
               <input
                 type="number"
                 min="0"
@@ -104,16 +106,7 @@ export default function AddExpenseModal({ onClose, onSubmit, initialData = null 
             )}
           </div>
 
-          {/* Description */}
-          <Field label="Transaction Name / Merchant" icon={<Store size={15} className="text-gray-400" />}>
-            <input
-              type="text"
-              placeholder="e.g. Starbucks, Rent, Salary"
-              value={form.description}
-              onChange={(e) => set("description", e.target.value)}
-              className="flex-1 text-sm text-gray-700 placeholder-gray-300 outline-none bg-transparent"
-            />
-          </Field>
+      
 
           {/* Category + Payment Method */}
           <div className="grid grid-cols-2 gap-3">
@@ -169,8 +162,8 @@ export default function AddExpenseModal({ onClose, onSubmit, initialData = null 
               <textarea
                 rows={3}
                 placeholder="Add any extra details here..."
-                value={form.notes}
-                onChange={(e) => set("notes", e.target.value)}
+                value={form.description}
+                onChange={(e) => set("description", e.target.value)}
                 className="w-full text-sm text-gray-700 placeholder-gray-300 outline-none bg-transparent resize-none"
               />
             </div>
@@ -182,14 +175,14 @@ export default function AddExpenseModal({ onClose, onSubmit, initialData = null 
         <div className="px-6 py-4 border-t border-gray-100 grid grid-cols-2 gap-3 shrink-0">
           <button
             onClick={onClose}
-            className="py-2.5 rounded-xl border border-gray-200 text-sm font-medium
+            className="py-2.5 cursor-pointer  rounded-xl border border-gray-200 text-sm font-medium
                        text-gray-600 hover:bg-gray-50 transition-colors"
           >
             Cancel
           </button>
           <button
             onClick={handleSubmit}
-            className="py-2.5 rounded-xl bg-gray-900 hover:bg-gray-800 text-white
+            className="py-2.5  cursor-pointer rounded-xl bg-gray-900 hover:bg-gray-800 text-white
                        text-sm font-medium transition-colors"
           >
             {isEdit ? "Save Changes" : "Add Expense"}

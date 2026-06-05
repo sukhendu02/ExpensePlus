@@ -30,7 +30,7 @@ const validateExpenseInput = (data)=>{
     // PAYMENT METHOD 
     if (data.paymentMethod !== undefined && data.paymentMethod !== null) {
         const Method = data.paymentMethod.trim();
-        if (trimmedMethod && !PAYMENT_METHODS.includes(Method)) {
+        if (Method && !PAYMENT_METHODS.includes(Method)) {
             throw  BadRequestError("Invalid Payment Method");
         }
         data.paymentMethod = Method;
@@ -113,7 +113,7 @@ export const updateExpeseService=async(expenseId,updatedData)=>{
     return updateExpense
 }
 
-// UPDATE EXPENSE SERVICE
+// GET EXPENSE SERVICE
 export const getAllExpensesService = async(query={})=>{
 
     // PREDEFINED CONSTANTS

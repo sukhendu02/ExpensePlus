@@ -1,12 +1,18 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { Plus,LayoutDashboard,ReceiptText,PieChart } from 'lucide-react';
+import AddExpenseModal from '../expense/AddExpenseModal';
+import { useState } from 'react';
+
 const NAV_ITEMS = [
   { to: "/",          icon: LayoutDashboard, label: "Dashboard" },
   { to: "/expenses",  icon: ReceiptText,     label: "Expenses"  },
   { to: "/reports",   icon: PieChart,        label: "Reports"   },
 ];
-export default function Sidebar() {
+export default function Sidebar({onAddExpense}) {
+  const [modalOpen, setModalOpen] = useState(false);
+ 
+
   return (
     <>
       {/* ── Desktop sidebar ── */}
@@ -46,7 +52,7 @@ export default function Sidebar() {
         {/* Footer */}
         <div className="px-4 mt-auto pt-4 border-t border-gray-100">
           <button
-            // onClick={onAddExpense}
+             onClick={() => setModalOpen(true)}
             className="w-full flex items-center justify-center gap-2 bg-brand-primary cursor-pointer hover:bg-gray-800 text-white text-[13px] font-medium py-2.5 rounded-lg transition-colors shadow-2xl ring-1 ring-black/5"
           >
             <Plus size={15} strokeWidth={2.5} />
@@ -84,6 +90,19 @@ export default function Sidebar() {
     
   ))}
 </nav>
+
+
+{modalOpen && (
+  <AddExpenseModal
+    onClose={() => setModalOpen(false)}
+  
+     onSubmit={async (data) => {
+            await onAddExpense(data);
+            setModalOpen(false);
+          }}
+
+  />
+)}
       </>
   )
 }
