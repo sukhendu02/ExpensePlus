@@ -10,7 +10,7 @@ export default function AppLayout() {
     <>
       <div  className="flex w-full h-screen bg-gray-100" >
       <Sidebar  />
-      <main className="main-content flex-1 overflow-x-hidden overflow-y-auto sm:m-1 p-2  mb-28 sm:mb-0 md:ml-60">
+      <main className="main-content flex-1 overflow-x-hidden overflow-y-auto sm:m-1 p-2  mb-28 sm:mb-0 md:ml-65">
         <Outlet />
       </main>
 
