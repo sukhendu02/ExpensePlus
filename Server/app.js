@@ -13,6 +13,14 @@ const app = express();
 // HELMET MIDDLEWARE FOR SECURITY HEADERS
 app.use(helmet());
 
+
+// CORS
+app.use(cors({
+    origin: process.env.FRONTEND_URL || "http://localhost:5173",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+  })
+);
+
 // MIDDLEWARE TO PARSE JSON REQUEST BODIES
 app.use(express.json());
 
