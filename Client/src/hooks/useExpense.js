@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback, useMemo, useRef } from 'react';
-import { getExpenses,deleteExpense,createExpense } from '../api/expenseApi';
+import { getExpenses,deleteExpense,createExpense,updateExpense } from '../api/expenseApi';
 import toast from 'react-hot-toast';
 
 export const useExpenses = () => {

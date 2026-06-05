@@ -10,6 +10,5 @@ export const CATEGORIES = [
   "Entertainment",
   "Shopping",
   "Travel",
-  "EMI",
   "Other",
 ];

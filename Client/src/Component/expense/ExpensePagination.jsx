@@ -52,16 +52,16 @@ export default function ExpensePagination({ pagination, onPageChange }) {
 
   return (
     <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
-      <p className="text-sm text-gray-500">
+      {/* <p className="text-sm text-gray-500">
         Showing <span className="font-medium text-gray-700">{from}</span>&ndash;
         <span className="font-medium text-gray-700">{to}</span> of{' '}
         <span className="font-medium text-gray-700">{total}</span> expenses
-      </p>
+      </p> */}
       <div className="flex items-center gap-1">
         <button
           onClick={handlePrev}
           disabled={!hasPrev}
-          className="rounded-lg border border-gray-200 px-3 py-1.5 text-sm text-gray-600 transition-colors hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:bg-white"
+          className="rounded-lg cursor-pointer border border-gray-200 px-3 py-1.5 text-sm text-gray-600 transition-colors hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:bg-white"
         >
           Previous
         </button>
@@ -74,7 +74,7 @@ export default function ExpensePagination({ pagination, onPageChange }) {
             <button
               key={p}
               onClick={() => handlePageClick(p)}
-              className={`min-w-[36px] rounded-lg px-3 py-1.5 text-sm transition-colors ${
+              className={`min-w-[36px] cursor-pointer rounded-lg px-3 py-1.5 text-sm transition-colors ${
                 p === page
                   ? 'bg-blue-600 font-medium text-white'
                   : 'border border-gray-200 text-gray-600 hover:bg-gray-50'
@@ -87,7 +87,7 @@ export default function ExpensePagination({ pagination, onPageChange }) {
         <button
           onClick={handleNext}
           disabled={!hasNext}
-          className="rounded-lg border border-gray-200 px-3 py-1.5 text-sm text-gray-600 transition-colors hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:bg-white"
+          className="rounded-lg border cursor-pointer border-gray-200 px-3 py-1.5 text-sm text-gray-600 transition-colors hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:bg-white"
         >
           Next
         </button>

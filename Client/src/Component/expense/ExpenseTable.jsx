@@ -3,6 +3,8 @@ import { CATEGORY_COLORS } from '../../utils/expenseConstant';
 import EmptyState from '../ui/EmptyState';
 import { useState } from 'react';
 import { X,Trash2 } from 'lucide-react';
+import AddExpenseModal from './AddExpenseModal';
+
 const COLUMNS = [
   { key: 'expenseDate', label: 'Date', sortable: true },
   { key: 'description', label: 'Description', sortable: false },
@@ -26,7 +28,7 @@ function SkeletonRows() {
   ));
 }
 
-export default function ExpenseTable({ expenses, loading, sortBy, order, onSort,onDelete }) {
+export default function ExpenseTable({ expenses, loading, sortBy, order, onSort,onDelete,onEdit }) {
   const handleHeaderClick = (field) => {
     onSort(field);
   };
@@ -68,7 +70,7 @@ export default function ExpenseTable({ expenses, loading, sortBy, order, onSort,
         return <span className="font-medium  text-md">{formatCurrency(expense.amount)}</span>;
       
       default:
-        return null;
+        return "-";
     }
   };
 
@@ -81,6 +83,7 @@ export default function ExpenseTable({ expenses, loading, sortBy, order, onSort,
 //   CONFIRMATION BEFORE DELETE
   const [confirmDelete, setConfirmDelete] = useState(null); 
 
+  const [editExpense, setEditExpense] = useState(null);
 
   return (
     <>
@@ -193,10 +196,10 @@ export default function ExpenseTable({ expenses, loading, sortBy, order, onSort,
         </button>
         <button
           onClick={() => {
-            handleEdit(selectedExpense);        // your existing edit handler
-            setSelectedExpense(null);
-          }}
-          className="bg-gray-900 text-white cursor-pointer rounded-lg py-2.5 text-sm font-medium hover:bg-gray-800 transition-colors"
+              setEditExpense(selectedExpense);
+              setSelectedExpense(null);
+            }}
+            className="bg-gray-900 text-white cursor-pointer rounded-lg py-2.5 text-sm font-medium hover:bg-gray-800 transition-colors"
         >
           Edit
         </button>
@@ -247,6 +250,18 @@ export default function ExpenseTable({ expenses, loading, sortBy, order, onSort,
       </div>
     </div>
   </>
+)}
+
+
+{editExpense && (
+  <AddExpenseModal
+    initialData={editExpense}
+    onClose={() => setEditExpense(null)}
+    onSubmit={(data) => {
+      onEdit(data.id, data);
+      setEditExpense(null);
+    }}
+  />
 )}
 </>
 

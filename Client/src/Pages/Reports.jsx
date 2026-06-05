@@ -61,6 +61,7 @@ export default function Reports() {
               order={filters.order}
               onSort={handleSort}
               onDelete={handleDelete}
+              onEdit={handleEdit}
             />
             {pagination && pagination.totalPage > 1 && (
               <div className="mt-4">

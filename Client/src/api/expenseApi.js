@@ -25,5 +25,5 @@ export const createExpense = (data) => {
 };
 
 export const updateExpense = (id, data) => {
-  return api.patch(`/expensw/${id}`, data);
+  return api.patch(`/expense/${id}`, data);
 };
