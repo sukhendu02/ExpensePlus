@@ -70,7 +70,7 @@ export default function ExpenseTable({ expenses, loading, sortBy, order, onSort,
         return <span className="font-medium  text-md">{formatCurrency(expense.amount)}</span>;
       
       default:
-        return "-";
+        return null;
     }
   };
 
@@ -88,7 +88,7 @@ export default function ExpenseTable({ expenses, loading, sortBy, order, onSort,
   return (
     <>
 
-    <div className="overflow-x-auto rounded-lg border border-gray-200 bg-white ring-1 ring-black/5 ">
+    <div className="hidden md:block overflow-x-auto rounded-lg border border-gray-200 bg-white ring-1 ring-black/5 ">
       <table className="w-full text-left text-sm">
         <thead>
           <tr className="border-b border-gray-200 bg-brand-muted/15 ">
@@ -127,6 +127,52 @@ export default function ExpenseTable({ expenses, loading, sortBy, order, onSort,
         </tbody>
       </table>
     </div>
+
+      {/* Mobile Cards */}
+  <div className="md:hidden space-y-3">
+    {loading ? (
+      <div>Loading...</div>
+    ) : (
+      expenses.map((expense) => (
+        <div
+          key={expense.id}
+          onClick={() => setSelectedExpense(expense)}
+          className="bg-white rounded-xl border border-gray-200 p-4 shadow-sm"
+        >
+          <div className="flex justify-between items-start">
+            <div>
+              <p className="font-medium text-gray-900 truncate">
+                {expense.description}
+              </p>
+
+              <p className="text-sm text-gray-500 mt-1">
+                {formatDate(expense.expenseDate)}
+              </p>
+            </div>
+
+            <span
+              className={`inline-flex rounded-full px-2.5 py-1 text-xs font-medium ${
+                CATEGORY_COLORS[expense.category] ||
+                "bg-gray-100 text-gray-700"
+              }`}
+            >
+              {expense.category}
+            </span>
+          </div>
+
+          <div className="flex justify-between items-center mt-4">
+            <span className="text-sm text-gray-500">
+              {expense.paymentMethod}
+            </span>
+
+            <span className="font-semibold text-lg text-brand-primary">
+              {formatCurrency(expense.amount)}
+            </span>
+          </div>
+        </div>
+      ))
+    )}
+  </div>
 
   {selectedExpense && (
   <>

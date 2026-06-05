@@ -1,8 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Dashboard from './Pages/Dashboard'
-import Expense from './Pages/Expense'
-import Reports from './Pages/Reports';
-import Link4 from './Pages/Link4';
+import Expenses from './Pages/Expenses'
 import AppLayout from './Component/Layout/AppLayout';
 
 import { Toaster } from 'react-hot-toast'
@@ -16,9 +14,8 @@ function App() {
     <Routes>
         <Route element={<AppLayout />}>
           <Route path="/" element={<Dashboard />} />
-          <Route path="/expenses" element={<Expense />}  />
-          <Route path="/reports"  element={<Reports />}   />
-          <Route path="/link4" element={<Link4 />}  />
+          <Route path="/expenses" element={<Expenses />}  />
+
         </Route>
       </Routes>
    </BrowserRouter>

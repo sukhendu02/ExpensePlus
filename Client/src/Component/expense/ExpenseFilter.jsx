@@ -27,8 +27,11 @@ export default function ExpenseFilters({ filters, onFilterChange, onClearFilters
     onFilterChange('endDate', e.target.value);
   };
 
-  return (
-    <div className="flex flex-wrap items-end gap-4 rounded-lg border border-gray-200 bg-white p-4">
+  return (<>
+
+
+ 
+    <div className=" flex flex-wrap items-end gap-4 rounded-lg border border-gray-200 bg-white p-4">
       <div className="min-w-0 flex-1 sm:min-w-[140px]">
         <label className="mb-1 block text-xs font-medium text-gray-500">Category</label>
         <select
@@ -87,5 +90,7 @@ export default function ExpenseFilters({ filters, onFilterChange, onClearFilters
         </button>
       </div>
     </div>
+    
+     </>
   );
 }

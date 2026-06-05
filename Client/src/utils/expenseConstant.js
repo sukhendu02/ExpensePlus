@@ -7,7 +7,6 @@ export const CATEGORIES = [
   "Groceries",
   "Health",
   "Investment",
-  "EMI",
   "Entertainment",
   "Shopping",
   "Travel",

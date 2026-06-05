@@ -7,7 +7,7 @@ import ExpenseFilters from '../Component/expense/ExpenseFilter';
 import Spinner from '../Component/ui/Spinner'
 import ErrorMessage from '../Component/ui/ErrorMessage';
 import { useOutletContext } from 'react-router-dom';
-export default function Reports() {
+export default function Expenses() {
      const {
     expenses,
     pagination,

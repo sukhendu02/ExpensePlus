@@ -120,7 +120,7 @@ export const getAllExpensesService = async(query={})=>{
     const {
         page=DEFAULT_PAGE,
         limit=DEFAULT_LIMIT,
-        sortBy = "expenseDate",
+        sortBy = "created_at",
         order = "DESC",
         category,
         search,

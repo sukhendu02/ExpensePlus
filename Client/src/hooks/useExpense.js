@@ -12,7 +12,7 @@ export const useExpenses = () => {
   const [filters, setFilters] = useState({
     page: 1,
     limit: 10,
-    sortBy: 'expenseDate',
+    sortBy: 'created_at',
     order: 'DESC',
     category: '',
     paymethod: '',

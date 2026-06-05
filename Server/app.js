@@ -6,7 +6,7 @@ dotenv.config();
 
 import {errorHandler,notFoundHandler} from "./src/middleware/ErrorHandler.js";
 import expenseRoute from "./src/modules/expenses/route/expenseRoute.js";
-
+import statsRoute from "./src/modules/stats/route/statsRoute.js"
 
 const app = express();
 
@@ -27,6 +27,9 @@ app.use(express.json());
 
 // ROUTE FOR EXPENSES
 app.use("/api/v1/expense",expenseRoute)
+
+// ROUTE FOR STATS
+app.use("/api/v1/stats",statsRoute)
 
 
 // HEALTH CHECK ENDPOINT    

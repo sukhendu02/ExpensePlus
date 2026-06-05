@@ -7,7 +7,6 @@ import { useState } from 'react';
 const NAV_ITEMS = [
   { to: "/",          icon: LayoutDashboard, label: "Dashboard" },
   { to: "/expenses",  icon: ReceiptText,     label: "Expenses"  },
-  { to: "/reports",   icon: PieChart,        label: "Reports"   },
 ];
 export default function Sidebar({onAddExpense}) {
   const [modalOpen, setModalOpen] = useState(false);
