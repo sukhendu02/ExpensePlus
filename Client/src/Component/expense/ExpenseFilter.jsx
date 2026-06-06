@@ -27,12 +27,13 @@ export default function ExpenseFilters({ filters, onFilterChange, onClearFilters
     onFilterChange('endDate', e.target.value);
   };
 
-  return (<>
+  return (
+  <>
 
+  <div className="rounded-lg border border-gray-200 bg-white p-4">
+    <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
 
- 
-    <div className=" flex flex-wrap items-end gap-4 rounded-lg border border-gray-200 bg-white p-4">
-      <div className="min-w-0 flex-1 sm:min-w-[140px]">
+      <div>
         <label className="mb-1 block text-xs font-medium text-gray-500">Category</label>
         <select
           value={filters.category || 'All'}
@@ -45,7 +46,7 @@ export default function ExpenseFilters({ filters, onFilterChange, onClearFilters
         </select>
       </div>
 
-      <div className="min-w-0 flex-1 sm:min-w-[140px]">
+      <div>
         <label className="mb-1 block text-xs font-medium text-gray-500">Payment Method</label>
         <select
           value={filters.paymethod || 'All'}
@@ -58,7 +59,7 @@ export default function ExpenseFilters({ filters, onFilterChange, onClearFilters
         </select>
       </div>
 
-      <div className="min-w-0 flex-1 sm:min-w-[140px]">
+      <div>
         <label className="mb-1 block text-xs font-medium text-gray-500">Start Date</label>
         <input
           type="date"
@@ -69,7 +70,7 @@ export default function ExpenseFilters({ filters, onFilterChange, onClearFilters
         />
       </div>
 
-      <div className="min-w-0 flex-1 sm:min-w-[140px]">
+      <div>
         <label className="mb-1 block text-xs font-medium text-gray-500">End Date</label>
         <input
           type="date"
@@ -80,16 +81,20 @@ export default function ExpenseFilters({ filters, onFilterChange, onClearFilters
         />
       </div>
 
-      <div className="flex-shrink-0">
-        <button
-          onClick={onClearFilters}
-          disabled={!hasActiveFilters && !filters.search}
-          className="rounded-lg border border-gray-200 px-4 py-2 text-sm text-gray-600 transition-colors hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-40"
-        >
-          Clear Filters
-        </button>
-      </div>
     </div>
+
+    {/* Clear filters — full width on mobile */}
+    <div className="mt-3 flex justify-end">
+      <button
+        onClick={onClearFilters}
+        disabled={!hasActiveFilters && !filters.search}
+        className="rounded-lg border border-gray-200 px-4 py-2 text-sm text-gray-600 transition-colors hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-40"
+      >
+        Clear Filters
+      </button>
+    </div>
+  </div>
+
     
      </>
   );
