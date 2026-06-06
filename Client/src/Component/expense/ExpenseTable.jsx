@@ -2,7 +2,7 @@ import { formatCurrency, formatDate } from '../../utils/formatters';
 import { CATEGORY_COLORS } from '../../utils/expenseConstant';
 import EmptyState from '../ui/EmptyState';
 import { useState } from 'react';
-import { X,Trash2 } from 'lucide-react';
+import { X,Trash2,loader } from 'lucide-react';
 import AddExpenseModal from './AddExpenseModal';
 
 const COLUMNS = [
@@ -112,6 +112,7 @@ export default function ExpenseTable({ expenses, loading, sortBy, order, onSort,
         <tbody>
           {loading ? (
             <SkeletonRows />
+          
           ) : (
             expenses.map((expense, index) => (
               <tr key={expense.id} onClick={()=>setSelectedExpense(expense)} className="border-gray-100 transition-colors hover:bg-brand-muted/20 cursor-pointer">
@@ -131,7 +132,8 @@ export default function ExpenseTable({ expenses, loading, sortBy, order, onSort,
       {/* Mobile Cards */}
   <div className="md:hidden space-y-3">
     {loading ? (
-      <div>Loading...</div>
+      // <div>Loading...</div>
+      <SkeletonRows/>
     ) : (
       expenses.map((expense) => (
         <div
