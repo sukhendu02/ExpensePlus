@@ -1,6 +1,6 @@
 import React from 'react'
 import Sidebar from '../ui/Sidebar'
-import BottomNav from '../ui/BottomNav'
+// import BottomNav from '../ui/BottomNav'
 import { Outlet } from 'react-router-dom'
 import { useExpenses } from '../../hooks/useExpense'
 import { useStats } from '../../hooks/useStats'
@@ -44,7 +44,7 @@ export default function AppLayout() {
         }} />
       </main>
 
-      <BottomNav />
+     
     </div>
   );
 }
