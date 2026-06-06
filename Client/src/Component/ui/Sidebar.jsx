@@ -62,7 +62,7 @@ export default function Sidebar({onAddExpense}) {
 
       {/* ── Mobile bottom nav ── */}
        <button
-    // onClick={onAddExpense}
+     onClick={() => setModalOpen(true)}
     className="md:hidden fixed bottom-20 right-4 z-50 w-13 h-13 bg-brand-primary ring-1 ring-black text-white rounded-full shadow-xl flex items-center justify-center active:scale-95 transition-transform"
     aria-label="Add Expense"
   >
