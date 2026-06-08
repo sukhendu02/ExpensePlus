@@ -2,7 +2,7 @@ import { formatCurrency, formatDate } from '../../utils/formatters';
 import { CATEGORY_COLORS } from '../../utils/expenseConstant';
 import EmptyState from '../ui/EmptyState';
 import { useState } from 'react';
-import { X,Trash2,loader } from 'lucide-react';
+import { X,Trash2 } from 'lucide-react';
 import AddExpenseModal from './AddExpenseModal';
 
 const COLUMNS = [

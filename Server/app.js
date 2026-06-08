@@ -31,7 +31,12 @@ app.use("/api/v1/expense",expenseRoute)
 // ROUTE FOR STATS
 app.use("/api/v1/stats",statsRoute)
 
-
+// ROOT ROUTE
+app.get("/",(req,res)=>{
+    res.status(200).json({
+        status:"success"
+    })
+})
 // HEALTH CHECK ENDPOINT    
 app.get("/health",(req,res)=>{
     res.status(200).json({
